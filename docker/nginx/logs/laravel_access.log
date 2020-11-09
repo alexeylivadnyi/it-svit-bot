@@ -15,3 +15,4 @@
 172.19.0.1 - - [08/Nov/2020:18:45:09 +0000] "POST /botman HTTP/1.1" 200 445 "http://bot.test/botman/tinker" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
 172.19.0.1 - - [08/Nov/2020:18:45:17 +0000] "POST /botman HTTP/1.1" 200 235 "http://bot.test/botman/tinker" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
 172.19.0.1 - - [08/Nov/2020:18:47:34 +0000] "POST /botman HTTP/1.1" 200 39 "http://bot.test/botman/tinker" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
+172.19.0.1 - - [08/Nov/2020:22:01:12 +0000] "GET / HTTP/1.1" 200 10529 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
