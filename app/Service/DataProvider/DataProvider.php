@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\Service\DataProvider;
 
 
 interface DataProvider

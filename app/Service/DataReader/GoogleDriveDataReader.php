@@ -1,22 +1,18 @@
 <?php
 
 
-namespace App\Service;
+namespace App\Service\DataReader;
 
 
-class DataReader
+class GoogleDriveDataReader implements DataReader
 {
     protected string $url = 'https://drive.google.com/file/d/1LXi1N1ixaxwCefcRTQ7QB1zQEQYlMTor/view?usp=sharing';
 
-    public function read()
-    {
-
-    }
 
     /**
      * @return string
      */
-    public function getLink(): string
+    public function source(): string
     {
         $id = explode(
             '/',

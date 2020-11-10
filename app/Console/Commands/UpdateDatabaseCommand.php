@@ -4,8 +4,9 @@ namespace App\Console\Commands;
 
 use App\Models\Article;
 use App\Models\Category;
-use App\Service\DataProvider;
+use App\Service\DataProvider\DataProvider;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class UpdateDatabaseCommand extends Command
 {
@@ -43,34 +44,21 @@ class UpdateDatabaseCommand extends Command
      */
     public function handle()
     {
-        /**
-         * 1. Получить данные
-         * 2. Получить какие-то идентификаторы тех данных, что есть на текущий момент в базе, предположительно поле link
-         * 3. При наличии записи с существующим идентификатором обновлять данные в базе
-         * 4. При отсутствии записи в базе - добавлять её
-         * 5. При наличии в базе записей, которых нет в файле - удалять их
-         */
-
         $categories = Category::pluck('id', 'title')->all();
         $categoryTitles = array_keys($categories);
 
+        DB::beginTransaction();
+
         foreach ($this->provider->provide() as $index => $value) {
-//            dump($categories);
             if (!$value) {
                 continue;
             }
-//            if ($index === 8743) {
-//                dd($categoryTitles, $value);
-//            }
+
             if (!in_array($value['category'], $categoryTitles)) {
                 $category = Category::create(['title' => $value['category']]);
                 $categories[$category->title] = $category->id;
                 $categoryTitles[] = $category->title;
                 $value['category_id'] = $category->id;
-
-//                if ($index === 8743) {
-//                    dd($categoryTitles, $value, in_array($value['category'], $categoryTitles));
-//                }
             } else {
                 $value['category_id'] = $categories[$value['category']];
             }
@@ -78,9 +66,15 @@ class UpdateDatabaseCommand extends Command
             $value['issue_number'] = $value['issueNumber'];
             $value['issue_url'] = $value['issueUrl'];
 
-            Article::create($value);
-            $this->info($index);
-//            dd($value);
+            Article::updateOrCreate(
+                [
+                    'link' => $value['link']
+                ],
+                $value
+            );
         }
+
+        DB::commit();
+        $this->info('Database has actual state');
     }
 }
