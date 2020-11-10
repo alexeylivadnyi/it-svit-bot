@@ -35,7 +35,7 @@ RUN apt-get install -y \
 
 RUN apt-get update \
     && pecl channel-update pecl.php.net \
-    && pecl install memcached apcu redis geoip-1.1.1 xdebug-2.9.8 mcrypt memcache \
+    && pecl install memcached apcu redis geoip-1.1.1 mcrypt memcache \
     && docker-php-ext-configure gd --with-jpeg --with-freetype  \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-configure zip \
@@ -61,7 +61,7 @@ RUN apt-get update \
         sockets \
         xsl \
         xmlrpc \
-    && docker-php-ext-enable apcu bcmath bz2 memcached gd redis geoip pdo_mysql xdebug mcrypt memcache \
+    && docker-php-ext-enable apcu bcmath bz2 memcached gd redis geoip pdo_mysql mcrypt memcache \
     && rm -rf /tmp/pear
 
 RUN apt-get remove -y --purge software-properties-common \
