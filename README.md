@@ -1,25 +1,10 @@
-<p align="center"><img height="188" width="198" src="https://botman.io/img/botman.png"></p>
-<h1 align="center">BotMan Studio</h1>
+Решение тестового задания на позицию Backend(Laravel) developer.
 
-## About BotMan Studio
+## Задача
+> На сервере лежит файл links.json, который хранит в себе перечень статей и периодически обновляется. Необходимо написать телеграм бот для поиска статей.
 
-While BotMan itself is framework agnostic, BotMan is also available as a bundle with the great [Laravel](https://laravel.com) PHP framework. This bundled version is called BotMan Studio and makes your chatbot development experience even better. By providing testing tools, an out of the box web driver implementation and additional tools like an enhanced CLI with driver installation, class generation and configuration support, it speeds up the development significantly.
+## Описание решения
+Для решения использовался пакет `botman/studio`, который основан на использовании Laravel 5.7. В пакете предоставлен удобный отладчик/визуализатор работы бота по `/botman/tinker`, добавлен драйвер для работы с Telegram `botman/driver-telegram`. 
+Обработка данных происходит в несколько этапов. Регулярно запускается команда `db:update`, которая обращается к предоставленному источнику данных, извлекает данные и помещает в локальную базу данных, нормализуя их в процессе. Такой способ дополнительного хранения данных на нашей стороне выбран ввиду низкой надежности предоставленного источника данных и зависимости от многих факторов, от человеческого до технического - пропала сеть, Google заблокировала учетную запись с данными и т.п. Добавлено несколько вариантов фильтрации данных по запросу пользователя и шаблон "диалога" с ботом, в рамках которого производится обработка его запросов.
 
-## Documentation
-
-You can find the BotMan and BotMan Studio documentation at [http://botman.io](http://botman.io).
-
-## Support the development
-**Do you like this project? Support it by donating**
-
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=m%2epociot%40googlemail%2ecom&lc=CY&item_name=BotMan&no_note=0&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
-- Patreon: [Donate](https://www.patreon.com/botman)
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within BotMan or BotMan Studio, please send an e-mail to Marcel Pociot at m.pociot@gmail.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-BotMan is free software distributed under the terms of the MIT license.
-
+Это мой первый опыт написания ботов и, несмотря на усилия заставить его работать, рабочего бота не получилось. Насколько я понимаю, это связано с проблемами с SSL сертификатом, который используется на моем сервере. В качестве демонстрационного экземпляра web-версия проекта доступна по адресу https://ec2-13-49-194-127.eu-north-1.compute.amazonaws.com/botman/tinker.
