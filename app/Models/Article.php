@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Article extends Model
 {
+    public const FILTER_BY_LINK = 'link';
+    public const FILTER_BY_DATE = 'date';
+    public const FILTER_BY_DESCRIPTION = 'description';
+    public const FILTER_BY_CATEGORY = 'category';
+
     public $fillable = [
         'link',
         'title',

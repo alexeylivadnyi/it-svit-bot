@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Conversations\SearchConversation;
 use BotMan\BotMan\BotMan;
-use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
 
 class BotManController extends Controller
@@ -33,5 +34,10 @@ class BotManController extends Controller
     public function startConversation(BotMan $bot)
     {
         $bot->startConversation(new ExampleConversation());
+    }
+
+    public function search(BotMan $bot)
+    {
+        $bot->startConversation(app()->make(SearchConversation::class));
     }
 }
