@@ -1,10 +1,10 @@
 <?php
-
+declare(strict_types=1);
 
 namespace App\Service\DataReader;
 
 
-class GoogleDriveDataReader implements DataReader
+class GoogleDriveDataSource implements DataSource
 {
     protected string $url = 'https://drive.google.com/file/d/1LXi1N1ixaxwCefcRTQ7QB1zQEQYlMTor/view?usp=sharing';
 

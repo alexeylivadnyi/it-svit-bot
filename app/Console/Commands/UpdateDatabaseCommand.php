@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Console\Commands;
 
@@ -75,6 +76,5 @@ class UpdateDatabaseCommand extends Command
         }
 
         DB::commit();
-        $this->info('Database has actual state');
     }
 }

@@ -4,13 +4,13 @@ declare(strict_types=1);
 namespace App\Service\DataProvider;
 
 
-use App\Service\DataReader\DataReader;
+use App\Service\DataReader\DataSource;
 
 class GoogleDriveDataProvider implements DataProvider
 {
-    protected DataReader $reader;
+    protected DataSource $reader;
 
-    public function __construct(DataReader $reader)
+    public function __construct(DataSource $reader)
     {
         $this->reader = $reader;
     }
