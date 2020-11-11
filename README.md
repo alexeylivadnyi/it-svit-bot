@@ -19,14 +19,16 @@
 
 3. `docker-compose exec php-fpm bash`
 
-4. `cp .env-example .env`
+4. `composer install`
 
-5. `php artisan key:generate`
+5. `cp .env-example .env`
 
-6. `php artisan migrate`
+6. `php artisan key:generate`
 
-7. ` php artisan db:update`
+7. `php artisan migrate`
 
-8. После выполнения этих действий проект должен быть доступен по адресу `http://bot.test` на 
+8. ` php artisan db:update`
+
+9. После выполнения этих действий проект должен быть доступен по адресу `http://bot.test` на 
    локальном компьютере.
 
